@@ -6,18 +6,18 @@
 .section .text
 .global fill_ram
 fill_ram:
+lea ram+0x50, %rax
 
-    lea ram, %rax           
-    add $0x50, %rax         
-    movb $0x09, %cl         
+movb $0xFF, 0(%rax)
+movb $0xFF, 1(%rax)
+movb $0xFF, 2(%rax)
+movb $0xFF, 3(%rax)
+movb $0xFF, 4(%rax)
+movb $0xFF, 5(%rax)
+movb $0xFF, 6(%rax)
+movb $0xFF, 7(%rax)
+movb $0xFF, 8(%rax)
 
-loop:
-    movb $0xFF, (%rax)      
-    inc %rax                
-    dec %cl                
-    cmp $0x00, %cl          
-    jne loop                
-
-    ret
+ret
 
 .section .note.GNU-stack,"",@progbits

@@ -6,21 +6,47 @@
 .section .text
 .global fill_ram
 fill_ram:
-    
-    movl $0, %eax
-    movl $1, %ecx
-loop:
-    cmp $10, %ecx
-    jg end_loop
-    
-    add %ecx, %eax
-    inc %ecx
-    jmp loop
-    
-end_loop:
-    
-    
+
+    movb $0x00, ram+0x50
+    movb $0x01, ram+0x51
+    movb $0x02, ram+0x52
+    movb $0x03, ram+0x53
+    movb $0x04, ram+0x54
+    movb $0x05, ram+0x55
+    movb $0x06, ram+0x56
+    movb $0x07, ram+0x57
+    movb $0x08, ram+0x58
+    movb $0x09, ram+0x59
+    movb $0x0A, ram+0x60
+    movb ram+0x50, %al
+
+    addb ram+0x51, %al
+    addb ram+0x52, %al
+    addb ram+0x53, %al
+    addb ram+0x54, %al
+    addb ram+0x55, %al
+    addb ram+0x56, %al
+    addb ram+0x57, %al
+    addb ram+0x58, %al
+    addb ram+0x59, %al
+    addb ram+0x60, %al
+    movb %al, ram+0x50
+
+
+
+    movb $0x00, ram+0x51
+    movb $0x00, ram+0x52
+    movb $0x00, ram+0x53
+    movb $0x00, ram+0x54
+    movb $0x00, ram+0x55
+    movb $0x00, ram+0x56
+    movb $0x00, ram+0x57
+    movb $0x00, ram+0x58
+    movb $0x00, ram+0x59
+    movb $0x00, ram+0x60
     ret
 
 .section .note.GNU-stack,"",@progbits
+
+
 
